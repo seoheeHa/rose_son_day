@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>손장미씨만 열어보세요</title>
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(to bottom, #ffe6e6, #fff0f5);
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      color: #b30059;
+      position: relative;
+      z-index: 1;
+    }
+    h1 {
+      font-size: 3em;
+      margin-bottom: 0.3em;
+      animation: fadeInDown 2s ease-out;
+    }
+    p {
+      font-size: 1.5em;
+      animation: fadeIn 3s ease-in;
+    }
+    .quote {
+      font-style: italic;
+      font-size: 1.2em;
+      margin-top: 2em;
+      animation: fadeIn 4s ease-in;
+      color: #94406d;
+    }
+    .rose {
+      font-size: 7em;
+      animation: bloom 3s ease-in-out forwards;
+      transform: scale(0);
+      margin-bottom: 0.5em;
+    }
+    .extra-roses {
+      font-size: 2em;
+      animation: fadeIn 4s ease-in;
+    }
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes bloom {
+      0% { transform: scale(0); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .petal {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background: pink;
+      border-radius: 50%;
+      opacity: 0.6;
+      animation: fall linear infinite;
+      z-index: 0;
+    }
+    @keyframes fall {
+      0% { transform: translateY(-10px) rotate(0deg); }
+      100% { transform: translateY(110vh) rotate(360deg); }
+    }
+
+    .prince {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      font-size: 2.5em;
+      animation: fadeIn 4s ease-in-out;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="rose">🌹</div>
+    <div class="extra-roses">🌹🌹🌹🌹🌹</div>
+    <h1>손장미씨!!!! 로즈데이 축하해!</h1>
+    <p>언니는 언니의 이름처럼 내 삶에 피어난 가장 예쁜 꽃이야.<br>
+    오늘도, 내일도, 계속 사랑할게요 💗<br>
+    - 하루퉁 </p>
+    <div class="quote">“가장 중요한 것은 눈에 보이지 않아.”<br>– 어린 왕자</div>
+  </div>
+
+  <div class="prince">🧑‍🚀🌍🌹</div>
+
+  <script>
+    // 꽃잎 떨어지는 효과
+    const createPetal = () => {
+      const petal = document.createElement('div');
+      petal.classList.add('petal');
+      petal.style.left = Math.random() * 100 + 'vw';
+      petal.style.animationDuration = 5 + Math.random() * 5 + 's';
+      petal.style.background = Math.random() > 0.5 ? '#ffb6c1' : '#ff69b4';
+      document.body.appendChild(petal);
+      setTimeout(() => petal.remove(), 10000);
+    };
+    setInterval(createPetal, 200);
+  </script>
+</body>
+</html>
